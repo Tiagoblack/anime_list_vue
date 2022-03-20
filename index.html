@@ -10,7 +10,7 @@
 <body>
     <header id="header">
         <div class="container_header">
-            <div class="logo">logo</div>
+            <div class="logo">Anime List</div>
             <nav>
                 <ul>
                     <li>Home</li>
@@ -21,7 +21,7 @@
         </div>
     </header>
     <main id="app">
-        <section :style="250px  * anime.length" class="container_anime">
+        <section  class="container_anime">
             <div @click="handleAnimeModal(anime)" v-for="anime in animes" class="anime">
                 <h5 class="anime_title">{{anime.title}}</h5>
                 <div class="anime-container_img">
@@ -30,8 +30,18 @@
                 </div>
             </div>
 
-            <div class="container_modal">
-                <div class="modal"></div>
+            <div v-if="modal" class="container_modal">
+                <div class="modal">
+                    <div @click="handleCloseModal" class="modal-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
+                    </div>
+                    <h4 class="modal_title">{{anime.title}}</h4>
+                    <div class="modal-container_img">
+                        <img  class="modal-img" :src="anime.image_url" alt="">
+                    </div>
+
+                    <button class="modal-button">ver mais</button>
+                </div>
             </div>
             <div v-if="load" class="load_anime"></div>
         </section>
